@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import HeartButton from "./HeartButton.astro";
+import Tag from "./Tag.astro";
+import Details from "./Details.astro";
+
+interface Props {
+  title: string;
+  details: {
+    duration: { minimum: number; maximum: number };
+    difficulty: number;
+    people: { minimum: number; maximum: number };
+  };
+  image: ImageMetadata;
+  price: string;
+  tag?: string;
+  href: string;
+}
+
+const { title, details, image, price, tag, href } = Astro.props;
+---
+
+<div class="centerContainer">
+  <div class="container">
+    <Image src={image} alt={title} loading="lazy" />
+    <div class="content">
+      <p class="title">{title}</p>
+      <Details {...details} />
+      <p class="price">{price}€</p>
+      <div class="additonalInfoContainer">
+        <Tag text="disponible" bgColor="green" textColor="white" />
+        <HeartButton />
+      </div>
+      <Button href={href} />
+    </div>
+  </div>
+</div>
+
+<style>
+  .centerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .container {
+    background: rgba(255, 255, 255, 0.16);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    box-shadow:
+      1.8px 2.1px 0.9px -2px rgba(0, 0, 0, 0.015),
+      14px 17px 3px -2px rgba(0, 0, 0, 0.03);
+    width: 16rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 1rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem 1rem 0 0;
+    object-fit: cover;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: end;
+  }
+  .additonalInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

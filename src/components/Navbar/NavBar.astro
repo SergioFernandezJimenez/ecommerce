@@ -1,0 +1,52 @@
+---
+import NavItem from "./NavItem.astro";
+import HomeIcon from "@/icons/HomeIcon.astro";
+import CategoriesIcon from "@/icons/CategoriesIcon.astro";
+import HelpIcon from "@/icons/HelpIcon.astro";
+import ProfileIcon from "@/icons/ProfileIcon.astro";
+import SalesIcon from "@/icons/SalesIcon.astro";
+---
+
+<nav>
+  <h2>Logo</h2>
+  <ul>
+    <NavItem href="#">
+      <HomeIcon slot="startEnhancer" />Home
+    </NavItem>
+    <NavItem href="#">
+      <CategoriesIcon slot="startEnhancer" />Categorías
+    </NavItem>
+    <NavItem href="#">
+      <SalesIcon slot="startEnhancer" />Ofertas
+    </NavItem>
+  </ul>
+  <ul>
+    <NavItem href="#">
+      <ProfileIcon slot="startEnhancer" />Perfil
+    </NavItem>
+    <NavItem href="#"><HelpIcon slot="startEnhancer" />Ayuda</NavItem>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: #4d1c91;
+    padding: 0rem 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    height: fit-content;
+    margin: 1rem;
+    justify-content: space-between;
+  }
+  h2 {
+    color: #ffffff;
+  }
+  ul {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

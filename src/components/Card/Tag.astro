@@ -1,0 +1,27 @@
+---
+interface Props {
+  text: string;
+  bgColor: string;
+  textColor: string;
+}
+
+const { text, bgColor, textColor } = Astro.props;
+
+const backgroundColor = bgColor;
+const fontColor = textColor;
+---
+
+<p>{text}</p>
+
+<style define:vars={{ backgroundColor, fontColor }}>
+  p {
+    display: flex;
+    font-size: 11px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--backgroundColor);
+    color: var(--fontColor);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    width: fit-content;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<li>
+  <a href={href}>
+    <slot name="startEnhancer" />
+    <slot />
+    <slot name="endEnhancer" />
+  </a>
+</li>
+
+<style>
+  li {
+    list-style: none;
+  }
+  a {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    color: #f1f3f4;
+    text-decoration: none;
+    &:hover {
+      color: #f1f3f4b9;
+      svg {
+        stroke: #f1f3f4b9;
+      }
+    }
+  }
+</style>
